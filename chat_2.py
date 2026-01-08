@@ -4,7 +4,7 @@ from google.generativeai.types import HarmCategory, HarmBlockThreshold
 import os
 
 # ---------------------------------------------------------
-# 1. BASE DE CONOCIMIENTO MAESTRA (RIT + ACADÉMICO + CCT + DIRECTORIO + CALENDARIO)
+# 1. BASE DE CONOCIMIENTO MAESTRA (RIT + ACADÉMICO + CCT + DIRECTORIO + CALENDARIO + MATRÍCULA)
 # ---------------------------------------------------------
 DATOS_RAG = [
     # =========================================================================
@@ -466,6 +466,127 @@ DATOS_RAG = [
         - 05/Ago: Reinscripciones 3º y 5º semestre.
         - 06/Ago: Reinscripción Repetidores 1º Sem.
         """
+    },
+
+    # =========================================================================
+    # BLOQUE 6: PLANTELES Y MATRÍCULA 2025-B (Estadísticas y Detalle)
+    # =========================================================================
+    {
+        "id": "mat_01",
+        "metadata": { "sección": "Estadísticas Generales y Planteles 1-30", "tipo_documento": "Matrícula 2025-B" },
+        "contenido": """
+        RESUMEN ESTADÍSTICO 2025-B:
+        - Total Planteles: 72
+        - Matrícula Global: 27,704 alumnos.
+        - Desglose: 1º Semestre (10,575), 3º Semestre (8,743), 5º Semestre (8,386).
+
+        DETALLE PLANTELES (ID 1-30):
+        1. ABALA: 103 alumnos (1º:38, 3º:34, 5º:31).
+        2. ACANCEH: 435 alumnos (1º:173, 3º:130, 5º:132).
+        3. AKIL: 337 alumnos (1º:150, 3º:85, 5º:102).
+        4. BACA: 365 alumnos (1º:135, 3º:111, 5º:119).
+        6. BUCTZOTZ: 262 alumnos (1º:94, 3º:65, 5º:103).
+        5. CACALCHEN: 270 alumnos (1º:103, 3º:86, 5º:81).
+        7. CALOTMUL: 109 alumnos (1º:46, 3º:32, 5º:31).
+        8. CAUCEL: 661 alumnos (1º:233, 3º:213, 5º:215).
+        9. CENOTILLO: 115 alumnos (1º:43, 3º:38, 5º:34).
+        10. CELESTUN: 208 alumnos (1º:74, 3º:61, 5º:73).
+        11. CENOTILLO (2): 115 alumnos (1º:43, 3º:38, 5º:34).
+        12. CHACSINKIN: 120 alumnos (1º:43, 3º:39, 5º:38).
+        13. CHANKOM: 114 alumnos (1º:42, 3º:34, 5º:38).
+        14. CHAPAB: 113 alumnos (1º:48, 3º:32, 5º:33).
+        15. CHEMAX: 721 alumnos (1º:285, 3º:232, 5º:204).
+        16. CHENKU: 1424 alumnos (1º:480, 3º:465, 5º:479).
+        17. CHICHIMILA: 249 alumnos (1º:107, 3º:79, 5º:63).
+        18. CHICXULUB PUEBLO: 161 alumnos (1º:74, 3º:46, 5º:41).
+        19. CHOCHOLA: 163 alumnos (1º:63, 3º:45, 5º:55).
+        20. CHUMAYEL: 144 alumnos (1º:57, 3º:38, 5º:49).
+        21. DZAN: 187 alumnos (1º:73, 3º:58, 5º:56).
+        22. DZEMUL: 127 alumnos (1º:46, 3º:33, 5º:48).
+        23. DZIDZANTUN: 260 alumnos (1º:93, 3º:82, 5º:85).
+        24. DZILAM GONZALEZ: 208 alumnos (1º:76, 3º:65, 5º:67).
+        25. DZITAS: 154 alumnos (1º:65, 3º:47, 5º:42).
+        26. ESPITA: 451 alumnos (1º:185, 3º:145, 5º:121).
+        27. HALACHO: 477 alumnos (1º:182, 3º:156, 5º:139).
+        28. HOCTUN: 248 alumnos (1º:98, 3º:77, 5º:73).
+        29. HOMUN: 294 alumnos (1º:113, 3º:99, 5º:82).
+        30. HUHI: 191 alumnos (1º:73, 3º:55, 5º:63).
+        """
+    },
+    {
+        "id": "mat_02",
+        "metadata": { "sección": "Planteles 31-60", "tipo_documento": "Matrícula 2025-B" },
+        "contenido": """
+        DETALLE PLANTELES (ID 31-60):
+        31. HUNUCMA: 696 alumnos (1º:293, 3º:218, 5º:185).
+        32. IXIL: 129 alumnos (1º:55, 3º:40, 5º:34).
+        33. KANNASIN: 1016 alumnos (1º:456, 3º:290, 5º:270).
+        34. KANTUNIL: 149 alumnos (1º:52, 3º:54, 5º:43).
+        35. KINCHIL: 267 alumnos (1º:110, 3º:80, 5º:77).
+        36. LOBAIN: 576 alumnos (1º:186, 3º:191, 5º:199).
+        37. MANI: 179 alumnos (1º:61, 3º:57, 5º:61).
+        38. MAXCANU: 452 alumnos (1º:169, 3º:139, 5º:144).
+        39. MAYAPAN: 126 alumnos (1º:50, 3º:39, 5º:37).
+        40. MERIDA-NTE: 1120 alumnos (1º:348, 3º:366, 5º:406).
+        41. MOCOCHA: 107 alumnos (1º:45, 3º:33, 5º:29).
+        42. MOTUL: 519 alumnos (1º:195, 3º:178, 5º:146).
+        43. MUNA: 398 alumnos (1º:146, 3º:126, 5º:126).
+        44. OPICHEN: 233 alumnos (1º:91, 3º:68, 5º:74).
+        45. OXKUTZCAB: 552 alumnos (1º:218, 3º:176, 5º:158).
+        46. PANABA: 226 alumnos (1º:102, 3º:69, 5º:55).
+        47. PETO: 569 alumnos (1º:227, 3º:173, 5º:169).
+        48. PROGRESO: 769 alumnos (1º:305, 3º:240, 5º:224).
+        49. SAMAHIL: 154 alumnos (1º:62, 3º:43, 5º:49).
+        50. SANTA ELENA: 151 alumnos (1º:55, 3º:53, 5º:43).
+        51. SEYE: 329 alumnos (1º:126, 3º:110, 5º:93).
+        52. SINANCHE: 111 alumnos (1º:42, 3º:38, 5º:31).
+        53. SOTUTA: 248 alumnos (1º:101, 3º:74, 5º:73).
+        54. SUCILA: 157 alumnos (1º:61, 3º:51, 5º:45).
+        55. TAHDZIU: 169 alumnos (1º:73, 3º:52, 5º:44).
+        56. TEABO: 248 alumnos (1º:97, 3º:75, 5º:76).
+        57. TECAX: 394 alumnos (1º:163, 3º:123, 5º:108).
+        58. TECOH: 330 alumnos (1º:141, 3º:105, 5º:84).
+        59. TEKOM: 150 alumnos (1º:58, 3º:41, 5º:51).
+        60. TELCHAC PUEBLO: 127 alumnos (1º:53, 3º:33, 5º:41).
+        """
+    },
+    {
+        "id": "mat_03",
+        "metadata": { "sección": "Planteles 61-78 y Segundo Grupo", "tipo_documento": "Matrícula 2025-B" },
+        "contenido": """
+        DETALLE PLANTELES (ID 61-78):
+        61. TEMAX: 233 alumnos (1º:85, 3º:77, 5º:71).
+        62. TEPAKAM: 83 alumnos (1º:31, 3º:25, 5º:27).
+        63. TICOPO: 213 alumnos (1º:87, 3º:68, 5º:58).
+        64. TICUL: 800 alumnos (1º:308, 3º:249, 5º:243).
+        65. TIMUCUY: 157 alumnos (1º:71, 3º:42, 5º:44).
+        66. TIXMEHUAC: 162 alumnos (1º:54, 3º:58, 5º:50).
+        67. TIZIMIN: 681 alumnos (1º:276, 3º:223, 5º:182).
+        68. TUNKAS: 120 alumnos (1º:52, 3º:33, 5º:35).
+        69. TZUCACAB: 391 alumnos (1º:158, 3º:120, 5º:113).
+        70. UAYMA: 158 alumnos (1º:57, 3º:50, 5º:51).
+        71. UCU: 157 alumnos (1º:58, 3º:58, 5º:41).
+        72. UMAN: 741 alumnos (1º:298, 3º:221, 5º:222).
+        73. VALLADOLID: 851 alumnos (1º:286, 3º:287, 5º:278).
+        74. XOCCHEL: 193 alumnos (1º:74, 3º:61, 5º:58).
+        75. X-MATKUIL: 1702 alumnos (1º:580, 3º:535, 5º:587).
+        76. YAXCABÁ: 202 alumnos (1º:82, 3º:63, 5º:57).
+        77. YAXKUKUL: 168 alumnos (1º:67, 3º:52, 5º:49).
+        78. YOBAIN: 93 alumnos (1º:35, 3º:29, 5º:29).
+
+        SEGUNDO GRUPO DE PLANTELES/CENTROS:
+        1. BECAL: 143 alumnos (1º:66, 3º:41, 5º:36).
+        2. CELESTUN: 126 alumnos (1º:49, 3º:44, 5º:33).
+        3. CHIKINDZONOT: 150 alumnos (1º:63, 3º:45, 5º:42).
+        4. DZITYA: 124 alumnos (1º:48, 3º:41, 5º:35).
+        5. DZONOT CARRETERO: 85 alumnos (1º:29, 3º:24, 5º:32).
+        6. KAUA: 166 alumnos (1º:69, 3º:51, 5º:46).
+        7. PISTE: 253 alumnos (1º:85, 3º:80, 5º:88).
+        8. POPOLNAH: 93 alumnos (1º:45, 3º:32, 5º:16).
+        9. TIXCACALCUPUL: 176 alumnos (1º:63, 3º:58, 5º:55).
+        10. TIXCANCAL: 125 alumnos (1º:44, 3º:35, 5º:46).
+        11. XCAN: 203 alumnos (1º:75, 3º:67, 5º:61).
+        """
     }
 ]
 
@@ -473,13 +594,14 @@ DATOS_RAG = [
 # 2. CONFIGURACIÓN DEL SISTEMA
 # ---------------------------------------------------------
 def generar_contexto_sistema(datos):
-    contexto = "ERES UN EXPERTO JURÍDICO, NORMATIVO E INSTITUCIONAL DEL COBAY (Colegio de Bachilleres del Estado de Yucatán).\n"
-    contexto += "Tu función es asesorar con precisión basándote en la siguiente documentación:\n\n"
-    contexto += "1. REGLAMENTO INTERIOR DE TRABAJO (RIT): Obligaciones, disciplina y condiciones generales.\n"
-    contexto += "2. REGLAMENTO ACADÉMICO: Trámites escolares, derechos y obligaciones de alumnos.\n"
-    contexto += "3. CONTRATO COLECTIVO DE TRABAJO (CCT): Derechos sindicales, tabuladores y prestaciones.\n"
-    contexto += "4. DIRECTORIO INSTITUCIONAL: Información de contacto, cargos y organigrama.\n"
-    contexto += "5. CALENDARIO ESCOLAR: Fechas de exámenes, vacaciones, inicios de curso y trámites.\n\n"
+    contexto = "ERES ALTIUS COBAY, UN SISTEMA DE CONSULTORÍA INTELIGENTE PARA EL COLEGIO DE BACHILLERES DEL ESTADO DE YUCATÁN.\n"
+    contexto += "Tu misión es fortalecer el ecosistema educativo proporcionando respuestas precisas basadas en la siguiente documentación oficial:\n\n"
+    contexto += "1. REGLAMENTO INTERIOR DE TRABAJO (RIT): Obligaciones, disciplina y condiciones laborales.\n"
+    contexto += "2. REGLAMENTO ACADÉMICO: Trámites, derechos y obligaciones de alumnos.\n"
+    contexto += "3. CONTRATO COLECTIVO DE TRABAJO (CCT): Derechos sindicales y prestaciones.\n"
+    contexto += "4. DIRECTORIO INSTITUCIONAL: Cargos, teléfonos y organigrama.\n"
+    contexto += "5. CALENDARIO ESCOLAR: Fechas clave de exámenes y actividades.\n"
+    contexto += "6. PLANTELES Y MATRÍCULA: Estadísticas de alumnos por plantel y semestre.\n\n"
     contexto += "BASE DE CONOCIMIENTO UNIFICADA:\n"
     
     for item in datos:
@@ -491,11 +613,10 @@ def generar_contexto_sistema(datos):
         contexto += f"{contenido}\n\n"
     
     contexto += "\nINSTRUCCIONES PARA RESPONDER:\n"
-    contexto += "1. CLASIFICA LA CONSULTA: Trabajador (RIT/CCT), Alumno (Académico/Calendario) o Contacto (Directorio).\n"
-    contexto += "2. FECHAS: Si preguntan por fechas, consulta el bloque CALENDARIO ESCOLAR.\n"
-    contexto += "3. JERARQUÍA: Si hay discrepancia laboral, el Contrato Colectivo (CCT) suele prevalecer.\n"
-    contexto += "4. PRECISIÓN: Cita siempre el Documento y la Cláusula/Artículo específico.\n"
-    contexto += "5. DATOS DE CONTACTO: Si piden teléfonos o nombres, usa exclusivamente la sección de DIRECTORIO.\n"
+    contexto += "1. IDENTIDAD: Preséntate como 'ALTIUS COBAY' si te preguntan quién eres.\n"
+    contexto += "2. CLASIFICACIÓN: Identifica si la consulta es Laboral, Académica, Administrativa o Estadística.\n"
+    contexto += "3. PRECISIÓN: Usa datos exactos del bloque de Matrícula o Calendario cuando se requieran cifras o fechas.\n"
+    contexto += "4. CITA: Menciona siempre la fuente (ej. 'Según el Calendario Escolar...' o 'Con base en el Reglamento Académico...').\n"
     return contexto
 
 SYSTEM_PROMPT = generar_contexto_sistema(DATOS_RAG)
@@ -508,40 +629,37 @@ safe_settings = {
 }
 
 # ---------------------------------------------------------
-# 3. INTERFAZ DE STREAMLIT (CON CORRECCIÓN DE SECRETOS)
+# 3. INTERFAZ DE STREAMLIT
 # ---------------------------------------------------------
-st.set_page_config(page_title="Asesor Normativo COBAY", page_icon="🏛️", layout="wide")
+st.set_page_config(page_title="ALTIUS COBAY - Consultoría", page_icon="🎓", layout="wide")
 
-st.title("🏛️ Asesor Integral COBAY")
-st.markdown("### Laboral • Académico • Sindical • Directorio • Calendario")
+st.title("🎓 ALTIUS COBAY")
+st.subheader("Consultoría Inteligente")
+st.markdown("**Fortaleciendo el ecosistema educativo del COBAY**")
 st.markdown("---")
 
-# --- LÓGICA DE API KEY CORREGIDA (TRY-EXCEPT) ---
+# --- LÓGICA DE API KEY ---
 api_key = None
 
 try:
-    # Intenta leer secreto (Solo funcionará en la Nube de Streamlit)
     if "GOOGLE_API_KEY" in st.secrets:
         api_key = st.secrets["GOOGLE_API_KEY"]
 except (FileNotFoundError, Exception):
-    # Si falla porque estamos en local sin archivo de secretos, ignoramos el error
     pass
 
-# Si no se encontró clave en secretos, mostramos la barra lateral (Modo Local)
 if not api_key:
     with st.sidebar:
         st.header("Configuración Local")
         api_key = st.text_input("Google API Key", type="password")
-        st.caption("Nota: En la versión web final, esta barra desaparecerá.")
+        st.caption("ALTIUS requiere credenciales para operar.")
 
-# Validación
 if api_key:
     try:
         genai.configure(api_key=api_key)
     except Exception as e:
         st.error(f"Error de configuración: {e}")
 else:
-    st.info("👋 Para comenzar, ingrese su API Key en la barra lateral.")
+    st.info("👋 Bienvenido a ALTIUS COBAY. Por favor ingrese su API Key para comenzar.")
     st.stop()
 
 # --- HISTORIAL Y CHAT ---
@@ -562,7 +680,7 @@ def get_gemini_history():
         })
     return gemini_history
 
-if prompt := st.chat_input("Escribe tu consulta aquí..."):
+if prompt := st.chat_input("Consulta a ALTIUS (Ej: ¿Cuál es la matrícula de Chenkú? o ¿Cuándo inician clases?)"):
     
     with st.chat_message("user"):
         st.markdown(prompt)
@@ -594,7 +712,7 @@ if prompt := st.chat_input("Escribe tu consulta aquí..."):
                 message_placeholder.markdown(full_response)
                 st.session_state.messages.append({"role": "assistant", "content": full_response})
             else:
-                st.error("El modelo no pudo generar una respuesta.")
+                st.error("ALTIUS no pudo generar una respuesta en este momento.")
 
         except Exception as e:
-            st.error(f"Error técnico: {e}")
+            st.error(f"Error técnico en el sistema ALTIUS: {e}")
