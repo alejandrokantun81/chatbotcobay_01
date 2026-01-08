@@ -4,7 +4,7 @@ from google.generativeai.types import HarmCategory, HarmBlockThreshold
 import os
 
 # ---------------------------------------------------------
-# 1. BASE DE CONOCIMIENTO MAESTRA (RIT + ACADÉMICO + CCT + DIRECTORIO + CALENDARIO + MATRÍCULA)
+# 1. BASE DE CONOCIMIENTO MAESTRA DE ALTIUS COBAY
 # ---------------------------------------------------------
 DATOS_RAG = [
     # =========================================================================
@@ -379,7 +379,7 @@ DATOS_RAG = [
     },
 
     # =========================================================================
-    # BLOQUE 5: CALENDARIO ESCOLAR (Nuevo Ingreso, Exámenes y Eventos)
+    # BLOQUE 5: CALENDARIO ESCOLAR
     # =========================================================================
     {
         "id": "cal_01",
@@ -469,7 +469,7 @@ DATOS_RAG = [
     },
 
     # =========================================================================
-    # BLOQUE 6: PLANTELES Y MATRÍCULA 2025-B (Estadísticas y Detalle)
+    # BLOQUE 6: PLANTELES Y MATRÍCULA 2025-B
     # =========================================================================
     {
         "id": "mat_01",
@@ -587,6 +587,55 @@ DATOS_RAG = [
         10. TIXCANCAL: 125 alumnos (1º:44, 3º:35, 5º:46).
         11. XCAN: 203 alumnos (1º:75, 3º:67, 5º:61).
         """
+    },
+
+    # =========================================================================
+    # BLOQUE 7: INFORMACIÓN ESTRATÉGICA (Preinscripción, Infraestructura y Finanzas)
+    # =========================================================================
+    {
+        "id": "estrategia_01",
+        "metadata": { "sección": "Indicadores Estratégicos y Necesidades", "tipo_documento": "Información Estratégica" },
+        "contenido": """
+        INFORMACIÓN ESTRATÉGICA PARA TOMA DE DECISIONES:
+
+        1. MATRÍCULA PREINSCRIPCIÓN DETALLADA:
+           - Abalá: I Sem (39), 3 Sem (34), 5 Sem (31) = Total 104.
+           - Acanceh: I Sem (144), 3 Sem (144), 5 Sem (132) = Total 420.
+           - Akil: I Sem (158), 3 Sem (90), 5 Sem (103) = Total 351.
+
+        2. INFRAESTRUCTURA (SALONES Y TURNO):
+           - Abalá: 3 Salones (Turno Matutino en 1º, 3º y 5º Semestre).
+           - Acanceh: 11 Salones (Turno Matutino en 1º, 3º y 5º Semestre).
+
+        3. CUPO E INGRESO (EXANI) - Caso Abalá:
+           - Director: Dr. José Candelario Ac Canché (Tel: 9991 78 77 92).
+           - Capacidad: 50 alumnos.
+           - Preinscritos: 34 / Examinados: 31.
+
+        4. INDICADORES ACADÉMICOS:
+           - Eficiencia Terminal Abalá: 71.79% (0.7179).
+
+        5. INVERSIÓN Y MANTENIMIENTO:
+           - Abalá (Escolarizado):
+             * Inversión Mantenimiento: $2,420,000.
+             * Inversión Infraestructura (Domo): $3,000,000.
+             * Total Inversión: $5,420,000.
+             * Fondo Aportaciones Múltiples: No.
+
+        6. NECESIDADES CRÍTICAS DEL PLANTEL (Abalá):
+           - Mantenimiento de A.C. existentes y colocación de nuevos.
+           - Mantenimiento de transformador.
+           - Construcción de cafetería nueva.
+
+        7. ASIGNACIÓN DE RECURSOS (EMSAD/Escuela Nuestra):
+           - Akil (Escolarizado): Monto asignado $0.
+           - Distribución de Excedente (Akil): $69,394.44.
+
+        8. ACTUALIZACIÓN DE TABULADOR (2025):
+           - Concepto: Certificado Parcial de Estudios o Duplicado.
+           - Costo 2019: $270.00.
+           - Costo 2025: $300.00 (Incremento del 11%).
+        """
     }
 ]
 
@@ -601,7 +650,8 @@ def generar_contexto_sistema(datos):
     contexto += "3. CONTRATO COLECTIVO DE TRABAJO (CCT): Derechos sindicales y prestaciones.\n"
     contexto += "4. DIRECTORIO INSTITUCIONAL: Cargos, teléfonos y organigrama.\n"
     contexto += "5. CALENDARIO ESCOLAR: Fechas clave de exámenes y actividades.\n"
-    contexto += "6. PLANTELES Y MATRÍCULA: Estadísticas de alumnos por plantel y semestre.\n\n"
+    contexto += "6. PLANTELES Y MATRÍCULA: Estadísticas generales de alumnos.\n"
+    contexto += "7. INFORMACIÓN ESTRATÉGICA: Datos financieros, infraestructura, necesidades específicas y tabuladores actualizados.\n\n"
     contexto += "BASE DE CONOCIMIENTO UNIFICADA:\n"
     
     for item in datos:
@@ -614,9 +664,9 @@ def generar_contexto_sistema(datos):
     
     contexto += "\nINSTRUCCIONES PARA RESPONDER:\n"
     contexto += "1. IDENTIDAD: Preséntate como 'ALTIUS COBAY' si te preguntan quién eres.\n"
-    contexto += "2. CLASIFICACIÓN: Identifica si la consulta es Laboral, Académica, Administrativa o Estadística.\n"
-    contexto += "3. PRECISIÓN: Usa datos exactos del bloque de Matrícula o Calendario cuando se requieran cifras o fechas.\n"
-    contexto += "4. CITA: Menciona siempre la fuente (ej. 'Según el Calendario Escolar...' o 'Con base en el Reglamento Académico...').\n"
+    contexto += "2. CLASIFICACIÓN: Identifica si la consulta es Laboral, Académica, Administrativa, Estadística o Estratégica.\n"
+    contexto += "3. PRECISIÓN: Usa datos exactos del bloque de Matrícula, Calendario o Estrategia cuando se requieran cifras o fechas.\n"
+    contexto += "4. CITA: Menciona siempre la fuente (ej. 'Según la Información Estratégica...' o 'Con base en el Reglamento Académico...').\n"
     return contexto
 
 SYSTEM_PROMPT = generar_contexto_sistema(DATOS_RAG)
@@ -680,7 +730,7 @@ def get_gemini_history():
         })
     return gemini_history
 
-if prompt := st.chat_input("Consulta a ALTIUS (Ej: ¿Cuál es la matrícula de Chenkú? o ¿Cuándo inician clases?)"):
+if prompt := st.chat_input("Consulta a ALTIUS (Ej: ¿Qué necesidades tiene el plantel Abalá? o ¿Cuánto cuesta un certificado?)"):
     
     with st.chat_message("user"):
         st.markdown(prompt)
