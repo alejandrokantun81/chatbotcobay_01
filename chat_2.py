@@ -8,7 +8,7 @@ import os
 # ---------------------------------------------------------
 DATOS_RAG = [
     # =========================================================================
-    # BLOQUE 1: REGLAMENTO INTERIOR DE TRABAJO (Normativa Laboral Interna)
+    # BLOQUE 1: REGLAMENTO INTERIOR DE TRABAJO
     # =========================================================================
     {
         "id": "rit_01",
@@ -590,51 +590,99 @@ DATOS_RAG = [
     },
 
     # =========================================================================
-    # BLOQUE 7: INFORMACIÓN ESTRATÉGICA (Preinscripción, Infraestructura y Finanzas)
+    # BLOQUE 7: INFRAESTRUCTURA (Inventario de Salones y Turnos)
     # =========================================================================
     {
-        "id": "estrategia_01",
-        "metadata": { "sección": "Indicadores Estratégicos y Necesidades", "tipo_documento": "Información Estratégica" },
+        "id": "infra_01",
+        "metadata": { "sección": "Inventario de Salones y Turnos", "tipo_documento": "Infraestructura Educativa" },
         "contenido": """
-        INFORMACIÓN ESTRATÉGICA PARA TOMA DE DECISIONES:
+        INVENTARIO DE SALONES Y DISTRIBUCIÓN DE TURNOS POR PLANTEL:
 
-        1. MATRÍCULA PREINSCRIPCIÓN DETALLADA:
-           - Abalá: I Sem (39), 3 Sem (34), 5 Sem (31) = Total 104.
-           - Acanceh: I Sem (144), 3 Sem (144), 5 Sem (132) = Total 420.
-           - Akil: I Sem (158), 3 Sem (90), 5 Sem (103) = Total 351.
-
-        2. INFRAESTRUCTURA (SALONES Y TURNO):
-           - Abalá: 3 Salones (Turno Matutino en 1º, 3º y 5º Semestre).
-           - Acanceh: 11 Salones (Turno Matutino en 1º, 3º y 5º Semestre).
-
-        3. CUPO E INGRESO (EXANI) - Caso Abalá:
-           - Director: Dr. José Candelario Ac Canché (Tel: 9991 78 77 92).
-           - Capacidad: 50 alumnos.
-           - Preinscritos: 34 / Examinados: 31.
-
-        4. INDICADORES ACADÉMICOS:
-           - Eficiencia Terminal Abalá: 71.79% (0.7179).
-
-        5. INVERSIÓN Y MANTENIMIENTO:
-           - Abalá (Escolarizado):
-             * Inversión Mantenimiento: $2,420,000.
-             * Inversión Infraestructura (Domo): $3,000,000.
-             * Total Inversión: $5,420,000.
-             * Fondo Aportaciones Múltiples: No.
-
-        6. NECESIDADES CRÍTICAS DEL PLANTEL (Abalá):
-           - Mantenimiento de A.C. existentes y colocación de nuevos.
-           - Mantenimiento de transformador.
-           - Construcción de cafetería nueva.
-
-        7. ASIGNACIÓN DE RECURSOS (EMSAD/Escuela Nuestra):
-           - Akil (Escolarizado): Monto asignado $0.
-           - Distribución de Excedente (Akil): $69,394.44.
-
-        8. ACTUALIZACIÓN DE TABULADOR (2025):
-           - Concepto: Certificado Parcial de Estudios o Duplicado.
-           - Costo 2019: $270.00.
-           - Costo 2025: $300.00 (Incremento del 11%).
+        1. Abalá: 3 Salones. 1º(Matutino), 3º(Matutino), 5º(Matutino).
+        2. Acanceh: 12 Salones. 1º(Matutino-Discontinuo), 3º(Matutino-Discontinuo/Vespertino-Discontinuo), 5º(Vespertino-Discontinuo).
+        3. Akil: 9 Salones. 1º(Matutino), 3º(Matutino/Vespertino), 5º(Vespertino).
+        4. Baca: 12 Salones. 1º(Matutino), 3º(Matutino/Vespertino), 5º(Vespertino).
+        5. Becanchen EMSAD: 3 Salones. 1º(Matutino), 3º(Matutino), 5º(Matutino).
+        6. Buctzotz: 8 Salones. 1º(Matutino), 3º(Matutino), 5º(Matutino).
+        7. Cacalchén: 6 Salones. 1º(Matutino), 3º(Matutino), 5º(Matutino).
+        8. Calotmul: 3 Salones. 1º(Matutino), 3º(Matutino), 5º(Matutino).
+        9. Caucel: 15 Salones. 1º(Matutino/Vespertino), 3º(Matutino/Vespertino), 5º(Matutino/Vespertino).
+        10. Celestún EMSAD: 6 Salones. 1º(Matutino/Vespertino), 3º(Matutino/Vespertino), 5º(Matutino/Vespertino).
+        11. Cenotillo: 3 Salones. 1º(Matutino), 3º(Matutino), 5º(Matutino).
+        12. Cepeda: 3 Salones. 1º(Matutino), 3º(Matutino), 5º(Matutino).
+        13. Chacsinkin EMSAD: 3 Salones. 1º(Matutino), 3º(Matutino), 5º(Matutino).
+        14. Chankom EMSAD: 6 Salones. 1º(Matutino), 3º(Matutino), 5º(Matutino).
+        15. Chemax: 16 Salones. 1º(Matutino), 3º(Vespertino), 5º(Matutino/Vespertino).
+        16. Chenkú: 28 Salones. 1º(Matutino/Vespertino), 3º(Matutino/Vespertino), 5º(Matutino/Vespertino).
+        17. Chichimilá: 9 Salones. 1º(Matutino), 3º(Matutino), 5º(Matutino).
+        18. Chicxulub Pueblo: 9 Salones. 1º(Matutino/Vespertino), 3º(Matutino), 5º(Vespertino).
+        19. Chikindzonot: 6 Salones. 1º(Matutino), 3º(Matutino), 5º(Matutino).
+        20. Cholul: 6 Salones. 1º(Matutino), 3º(Matutino), 5º(Matutino).
+        21. Colonia Yucatán: 6 Salones. 1º(Matutino), 3º(Matutino), 5º(Matutino).
+        22. Cuzamá: 6 Salones. 1º(Matutino), 3º(Matutino), 5º(Matutino).
+        23. Dzemul: 6 Salones. 1º(Matutino), 3º(Matutino), 5º(Matutino).
+        24. Dzidzantún: 9 Salones. 1º(Matutino), 3º(Matutino), 5º(Matutino).
+        25. Dzilam Gonzalez: 6 Salones. 1º(Matutino), 3º(Matutino), 5º(Matutino).
+        26. Dzitás: 3 Salones. 1º(Matutino), 3º(Matutino), 5º(Matutino).
+        27. Dzonot Carretero EMSAD: 6 Salones. 1º(Vespertino), 3º(Vespertino), 5º(Vespertino).
+        28. Halachó: 12 Salones. 1º(Matutino), 3º(Matutino), 5º(Matutino).
+        29. Homún: 6 Salones. 1º(Matutino), 3º(Matutino), 5º(Matutino).
+        30. Hunucmá: 15 Salones. 1º(Matutino), 3º(Matutino), 5º(Matutino).
+        31. Kanasín: 23 Salones. 1º(Matutino/Vespertino), 3º(Matutino/Vespertino), 5º(Matutino/Vespertino).
+        32. Kantunil: 4 Salones. 1º(Matutino), 3º(Matutino), 5º(Matutino).
+        33. Kaua EMSAD: 6 Salones. 1º(Matutino), 3º(Matutino), 5º(Matutino).
+        34. Kimbilá: 9 Salones. 1º(Matutino), 3º(Matutino/Vespertino), 5º(Vespertino).
+        35. Kinchil: 9 Salones. 1º(Matutino), 3º(Matutino), 5º(Matutino).
+        36. Komchén: 6 Salones. 1º(Matutino), 3º(Matutino), 5º(Matutino).
+        37. Muna: 6 Salones. 1º(Matutino), 3º(Matutino), 5º(Matutino).
+        38. Opichén: 5 Salones. 1º(Matutino), 3º(Matutino), 5º(Matutino).
+        39. Peto: 18 Salones. 1º(Matutino), 3º(Matutino/Vespertino), 5º(Vespertino).
+        40. Pisté EMSAD: 9 Salones. 1º(Vespertino), 3º(Matutino/Vespertino), 5º(Matutino).
+        41. Popolnah EMSAD: 3 Salones. 1º(Matutino), 3º(Matutino), 5º(Matutino).
+        42. Progreso: 30 Salones. 1º(Matutino/Vespertino), 3º(Matutino/Vespertino), 5º(Matutino/Vespertino).
+        43. Rio Lagartos: 3 Salones. 1º(Matutino), 3º(Matutino), 5º(Matutino).
+        44. Sacalum: 3 Salones. 1º(Matutino), 3º(Matutino), 5º(Matutino).
+        45. San José Tzal: 6 Salones. 1º(Mat-Disc/Vesp-Disc), 3º(Mat-Disc/Vesp-Disc), 5º(Mat-Disc/Vesp-Disc).
+        46. Santa Elena: 3 Salones. 1º(Matutino), 3º(Matutino), 5º(Matutino).
+        47. Santa Rosa: 45 Salones. 1º(Matutino/Vespertino), 3º(Matutino/Vespertino), 5º(Matutino/Vespertino).
+        48. Seyé: 6 Salones. 1º(Matutino), 3º(Matutino), 5º(Matutino).
+        49. Sinanché: 3 Salones. 1º(Matutino), 3º(Matutino), 5º(Matutino).
+        50. Sotuta: 9 Salones. 1º(Matutino), 3º(Matutino), 5º(Matutino).
+        51. Sucilá: 4 Salones. 1º(Matutino), 3º(Matutino), 5º(Matutino).
+        52. Tahdziu EMSAD: 6 Salones. 1º(Matutino), 3º(Matutino), 5º(Matutino).
+        53. Teabo: 6 Salones. 1º(Matutino), 3º(Matutino), 5º(Matutino).
+        54. Tecax: 12 Salones. 1º(Matutino), 3º(Matutino), 5º(Matutino).
+        55. Tecoh: 9 Salones. 1º(Matutino), 3º(Matutino), 5º(Matutino).
+        56. Tekit: 9 Salones. 1º(Matutino), 3º(Matutino), 5º(Matutino).
+        57. Tekom: 6 Salones. 1º(Matutino), 3º(Matutino), 5º(Matutino).
+        58. Telchac Pueblo: 6 Salones. 1º(Matutino), 3º(Matutino), 5º(Matutino).
+        59. Temax: 6 Salones. 1º(Matutino), 3º(Matutino), 5º(Matutino).
+        60. Temozón: 6 Salones. 1º(Matutino), 3º(Matutino), 5º(Matutino).
+        61. Tepakam: 3 Salones. 1º(Matutino), 3º(Matutino), 5º(Matutino).
+        62. Teya: 3 Salones. 1º(Matutino), 3º(Matutino), 5º(Matutino).
+        63. Ticopó: 6 Salones. 1º(Matutino), 3º(Matutino), 5º(Matutino).
+        64. Ticul: 18 Salones. 1º(Matutino/Vespertino), 3º(Matutino/Vespertino), 5º(Matutino/Vespertino).
+        65. Timucuy: 6 Salones. 1º(Matutino), 3º(Matutino), 5º(Matutino).
+        66. Tinum: 3 Salones. 1º(Matutino), 3º(Matutino), 5º(Matutino).
+        67. Tixcacalcupul EMSAD: 6 Salones. 1º(Matutino), 3º(Matutino), 5º(Matutino).
+        68. Tixcancal EMSAD: 6 Salones. 1º(Vespertino), 3º(Matutino/Vespertino), 5º(Matutino).
+        69. Tixkokob: 15 Salones. 1º(Matutino/Vespertino), 3º(Matutino/Vespertino), 5º(Matutino/Vespertino).
+        70. Tixméhuac: 3 Salones. 1º(Matutino), 3º(Matutino), 5º(Matutino).
+        71. Tixpéual: 3 Salones. 1º(Matutino), 3º(Matutino), 5º(Matutino).
+        72. Tizimín: 18 Salones. 1º(Matutino/Vespertino), 3º(Matutino/Vespertino), 5º(Matutino/Vespertino).
+        73. Tunkás: 3 Salones. 1º(Matutino), 3º(Matutino), 5º(Matutino).
+        74. Tzucacab: 9 Salones. 1º(Matutino), 3º(Matutino), 5º(Matutino).
+        75. Uayma: 3 Salones. 1º(Matutino), 3º(Matutino), 5º(Matutino).
+        76. Ucú: 3 Salones. 1º(Matutino), 3º(Matutino), 5º(Matutino).
+        77. Umán: 18 Salones. 1º(Matutino/Vespertino), 3º(Matutino/Vespertino), 5º(Matutino/Vespertino).
+        78. Valladolid: 18 Salones. 1º(Matutino/Vespertino), 3º(Matutino/Vespertino), 5º(Matutino/Vespertino).
+        79. Xcan EMSAD: 6 Salones. 1º(Vespertino), 3º(Vespertino), 5º(Vespertino).
+        80. X-Matkuil: 30 Salones. 1º(Matutino/Vespertino), 3º(Matutino/Vespertino), 5º(Matutino/Vespertino).
+        81. Xocchel: 6 Salones. 1º(Matutino), 3º(Matutino), 5º(Matutino).
+        82. Xoclán: 30 Salones. 1º(Matutino/Vespertino), 3º(Matutino/Vespertino), 5º(Matutino/Vespertino).
+        83. Yaxcabá: 6 Salones. 1º(Matutino), 3º(Matutino), 5º(Matutino).
+        84. Yaxkukul: 3 Salones. 1º(Matutino), 3º(Matutino), 5º(Matutino).
+        85. Yobain: 3 Salones. 1º(Matutino), 3º(Matutino), 5º(Matutino).
         """
     }
 ]
@@ -650,8 +698,8 @@ def generar_contexto_sistema(datos):
     contexto += "3. CONTRATO COLECTIVO DE TRABAJO (CCT): Derechos sindicales y prestaciones.\n"
     contexto += "4. DIRECTORIO INSTITUCIONAL: Cargos, teléfonos y organigrama.\n"
     contexto += "5. CALENDARIO ESCOLAR: Fechas clave de exámenes y actividades.\n"
-    contexto += "6. PLANTELES Y MATRÍCULA: Estadísticas generales de alumnos.\n"
-    contexto += "7. INFORMACIÓN ESTRATÉGICA: Datos financieros, infraestructura, necesidades específicas y tabuladores actualizados.\n\n"
+    contexto += "6. PLANTELES Y MATRÍCULA: Estadísticas de alumnos por plantel y semestre.\n"
+    contexto += "7. INFRAESTRUCTURA: Inventario de salones y distribución de turnos por semestre.\n\n"
     contexto += "BASE DE CONOCIMIENTO UNIFICADA:\n"
     
     for item in datos:
@@ -664,9 +712,9 @@ def generar_contexto_sistema(datos):
     
     contexto += "\nINSTRUCCIONES PARA RESPONDER:\n"
     contexto += "1. IDENTIDAD: Preséntate como 'ALTIUS COBAY' si te preguntan quién eres.\n"
-    contexto += "2. CLASIFICACIÓN: Identifica si la consulta es Laboral, Académica, Administrativa, Estadística o Estratégica.\n"
-    contexto += "3. PRECISIÓN: Usa datos exactos del bloque de Matrícula, Calendario o Estrategia cuando se requieran cifras o fechas.\n"
-    contexto += "4. CITA: Menciona siempre la fuente (ej. 'Según la Información Estratégica...' o 'Con base en el Reglamento Académico...').\n"
+    contexto += "2. CLASIFICACIÓN: Identifica si la consulta es Laboral, Académica, Administrativa, Estadística o de Infraestructura.\n"
+    contexto += "3. PRECISIÓN: Usa datos exactos del bloque de Matrícula, Calendario o Infraestructura cuando se requieran cifras o fechas.\n"
+    contexto += "4. CITA: Menciona siempre la fuente (ej. 'Según el Inventario de Infraestructura...' o 'Con base en el Reglamento Académico...').\n"
     return contexto
 
 SYSTEM_PROMPT = generar_contexto_sistema(DATOS_RAG)
@@ -730,7 +778,7 @@ def get_gemini_history():
         })
     return gemini_history
 
-if prompt := st.chat_input("Consulta a ALTIUS (Ej: ¿Qué necesidades tiene el plantel Abalá? o ¿Cuánto cuesta un certificado?)"):
+if prompt := st.chat_input("Consulta a ALTIUS (Ej: ¿Cuántos salones tiene el plantel Acanceh? o ¿Cuándo inician clases?)"):
     
     with st.chat_message("user"):
         st.markdown(prompt)
