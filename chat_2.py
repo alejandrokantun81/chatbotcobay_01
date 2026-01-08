@@ -4,15 +4,11 @@ from google.generativeai.types import HarmCategory, HarmBlockThreshold
 import os
 
 # ---------------------------------------------------------
-# 1. BASE DE CONOCIMIENTO MAESTRA (RIT + ACADÉMICO + CCT)
+# 1. BASE DE CONOCIMIENTO MAESTRA (RIT + ACADÉMICO + CCT + DIRECTORIO)
 # ---------------------------------------------------------
 DATOS_RAG = [
-    # ... (Se mantiene la misma base de datos, no es necesario repetirla toda visualmente aquí
-    # pero asegúrate de que al copiar, COPIES TODO EL BLOQUE DE ABAJO QUE SÍ LA INCLUYE) ...
-    # PARA TU COMODIDAD, HE INCLUIDO TODO EL CÓDIGO COMPLETO ABAJO:
-    
     # =========================================================================
-    # BLOQUE 1: REGLAMENTO INTERIOR DE TRABAJO
+    # BLOQUE 1: REGLAMENTO INTERIOR DE TRABAJO (Normativa Laboral Interna)
     # =========================================================================
     {
         "id": "rit_01",
@@ -126,7 +122,7 @@ DATOS_RAG = [
     },
 
     # =========================================================================
-    # BLOQUE 2: REGLAMENTO ACADÉMICO
+    # BLOQUE 2: REGLAMENTO ACADÉMICO (Normativa Escolar y Alumnos)
     # =========================================================================
     {
         "id": "acad_01",
@@ -210,7 +206,7 @@ DATOS_RAG = [
     },
 
     # =========================================================================
-    # BLOQUE 3: CONTRATO COLECTIVO DE TRABAJO
+    # BLOQUE 3: CONTRATO COLECTIVO DE TRABAJO (Sindicato y Prestaciones)
     # =========================================================================
     {
         "id": "cct_01",
@@ -301,6 +297,85 @@ DATOS_RAG = [
         "id": "cct_18",
         "metadata": { "sección": "Días Personales y Tabulador (Clausulas 91-Final)", "tipo_documento": "Contrato Colectivo de Trabajo" },
         "contenido": "Cláusula 91 Uniformes. Cláusula 92-95 Descansos: Cumpleaños, Día Madre/Padre, Luto (3 días directo, 2 indirecto). Anexo Tabulador: Técnico ($7.5k-11k), Vigilante ($8.4k), Profesor CB I ($435/hr)."
+    },
+
+    # =========================================================================
+    # BLOQUE 4: DIRECTORIO INSTITUCIONAL (NUEVO)
+    # =========================================================================
+    {
+        "id": "dir_01",
+        "metadata": { "sección": "Dirección General y Staff", "tipo_documento": "Directorio Institucional" },
+        "contenido": """
+        DIRECTORIO DE AUTORIDADES DEL COBAY:
+        
+        1. DIRECCIÓN GENERAL
+           - Titular: Mtro. Didier Manuel De Jesús Barrera Novelo (Director General).
+           - Dirección: Calle 34 núm. 420-B x 35, Col. López Mateos, Mérida.
+           - Teléfono: (999) 611 8690 Ext. 28051 y 28052.
+        
+        2. UNIDAD DE VINCULACIÓN
+           - Titular: Ing. Manuel Alberto Bonilla Campo (Jefe de Unidad).
+           - Teléfono: Ext. 28091.
+        
+        3. COMUNICACIÓN SOCIAL
+           - Titular: Lic. Martín Rodrigo Kauil Conde (Jefe de Departamento).
+           - Teléfono: Ext. 28007.
+        
+        4. RELACIONES PÚBLICAS
+           - Titular: Lic. Oswaldo Cardeña Medina (Jefe de Departamento).
+           - Teléfono: Ext. 28007.
+        
+        5. DIRECCIÓN JURÍDICA
+           - Titular: Mtro. David Alejandro Patrón Bianchi (Director Jurídico).
+           - Teléfono: Ext. 28044 y 28045.
+           - Asuntos Contenciosos: Lic. Alfonso Arturo Orozco Araiza (Jefe Depto). Tel: Ext. 608 / Cel: 9991678554.
+           - Asuntos Mixtos: Lic. Julio César Rodríguez (Jefe Depto). Tel: Ext. 605 / Cel: 9991678554.
+           - Unidad de Transparencia: Lic. Gabriela Margarita Montejo Diaz. Tel: Ext. 605 / Cel: 9991678554.
+        """
+    },
+    {
+        "id": "dir_02",
+        "metadata": { "sección": "Dirección Administrativa y Planeación", "tipo_documento": "Directorio Institucional" },
+        "contenido": """
+        6. DIRECCIÓN ADMINISTRATIVA
+           - Titular: C.P. Martha Cecilia Dorantes Caballero (Directora Administrativa).
+           - Teléfono: Ext. 608 / Cel: 9991678554.
+           - Subdirección de Finanzas: C.P. Daniel Gallardo Colli. Tel: Ext. 606 / Cel: 9991678554.
+           - Recursos Humanos: Lic. Lizbeth Beatríz García Pérez. Tel: Ext. 28015.
+           - Recursos Materiales: Mtra. Maira Alejandra Alcocer Pulido. Tel: (999) 611 8690 / Cel: 9991678553.
+           - Informática: Lic. Leydi Del Socorro Cobá. Tel: Ext. 28022.
+           - Servicios Generales: Mtro. José Carlos Brito Díaz. Tel: (999) 611 8690 / Cel: 9999254377.
+           - Unidad de Control y Evaluación (Interna): Mtro. Leobardo Medina Xix. Tel: Ext. 602 / Cel: 9991678554.
+           - Supervisión Zona 01: Lic. Javier Arcangel May Meléndez (Ext. 28046).
+           - Supervisión Zona (General): Lic. José Dolores Chay Cauich (Ext. 28046).
+           - Supervisión Zona 03: Mtro. Luis Enrique Alamilla Herrera (Ext. 28046).
+
+        7. DIRECCIÓN TÉCNICA Y PLANEACIÓN
+           - Titular: Mtra. Mariela Elizabeth Mena Godoy.
+           - Teléfono: Ext. 28040.
+           - Presupuesto: C.P. Cristina Isabel Sánchez López. Tel: Ext. 606 / Cel: 9991678554.
+           - Estadísticas: Ing. Beatriz De Fátima Arceo Medina. Tel: Ext. 606 / Cel: 9991678554.
+           - Estudios y Proyectos: Arqto. Antonio Morales Balderas. Tel: Ext. 28091.
+        """
+    },
+    {
+        "id": "dir_03",
+        "metadata": { "sección": "Dirección Académica", "tipo_documento": "Directorio Institucional" },
+        "contenido": """
+        8. DIRECCIÓN ACADÉMICA
+           - Director: Dr. Cristian Miguel Sosa Molina.
+           - Teléfono: Ext. 28025 y 28026.
+           
+           - Subdirector Académico: Dr. Manuel Alejandro Kantún Ramírez.
+           - Teléfono: Ext. 28026.
+           
+           - Control Escolar: Lic. Ileana Del Carmen Rodríguez Quintal. Tel: Ext. 28036.
+           - Actualización y Formación Docente: Lic. Tania Beatríz Figueroa Chan. Tel: Ext. 28028.
+           - Servicios Académicos: Mtro. Marco Antonio Turriza Chan. Tel: Ext. 28027.
+           - Orientación, Laboratorios y Bibliotecas: Mtro. Javier Concha Bastarrachea. Tel: Ext. 28031.
+           - Actividades Cívicas, Culturales y Deportivas: Lic. Jorge Abel Jiménez Aguilar. Tel: Ext. 28034.
+           - Coordinación EMSAD: Laet. Minelia Soberanis Herrera. Tel: Ext. 28039.
+        """
     }
 ]
 
@@ -308,11 +383,12 @@ DATOS_RAG = [
 # 2. CONFIGURACIÓN DEL SISTEMA
 # ---------------------------------------------------------
 def generar_contexto_sistema(datos):
-    contexto = "ERES UN EXPERTO JURÍDICO Y NORMATIVO DEL COBAY (Colegio de Bachilleres del Estado de Yucatán).\n"
-    contexto += "Tu función es asesorar con precisión basándote en TRES documentos rectores:\n\n"
+    contexto = "ERES UN EXPERTO JURÍDICO, NORMATIVO E INSTITUCIONAL DEL COBAY (Colegio de Bachilleres del Estado de Yucatán).\n"
+    contexto += "Tu función es asesorar con precisión basándote en la siguiente documentación:\n\n"
     contexto += "1. REGLAMENTO INTERIOR DE TRABAJO (RIT): Obligaciones, disciplina y condiciones generales.\n"
     contexto += "2. REGLAMENTO ACADÉMICO: Trámites escolares, derechos y obligaciones de alumnos.\n"
-    contexto += "3. CONTRATO COLECTIVO DE TRABAJO (CCT): Derechos sindicales, tabuladores salariales y prestaciones económicas exclusivas.\n\n"
+    contexto += "3. CONTRATO COLECTIVO DE TRABAJO (CCT): Derechos sindicales, tabuladores y prestaciones.\n"
+    contexto += "4. DIRECTORIO INSTITUCIONAL: Información de contacto, cargos y organigrama.\n\n"
     contexto += "BASE DE CONOCIMIENTO UNIFICADA:\n"
     
     for item in datos:
@@ -324,9 +400,10 @@ def generar_contexto_sistema(datos):
         contexto += f"{contenido}\n\n"
     
     contexto += "\nINSTRUCCIONES PARA RESPONDER:\n"
-    contexto += "1. CLASIFICA LA CONSULTA: Determina si el usuario es Trabajador (usa RIT o CCT) o Alumno (usa Académico).\n"
-    contexto += "2. JERARQUÍA NORMATIVA: Si hay discrepancia, el Contrato Colectivo (CCT) suele prevalecer para trabajadores.\n"
+    contexto += "1. CLASIFICA LA CONSULTA: Trabajador (RIT/CCT), Alumno (Académico) o Contacto (Directorio).\n"
+    contexto += "2. JERARQUÍA: Si hay discrepancia laboral, el Contrato Colectivo (CCT) suele prevalecer.\n"
     contexto += "3. PRECISIÓN: Cita siempre el Documento y la Cláusula/Artículo específico.\n"
+    contexto += "4. DATOS DE CONTACTO: Si piden teléfonos o nombres, usa exclusivamente la sección de DIRECTORIO.\n"
     return contexto
 
 SYSTEM_PROMPT = generar_contexto_sistema(DATOS_RAG)
@@ -344,7 +421,7 @@ safe_settings = {
 st.set_page_config(page_title="Asesor Normativo COBAY", page_icon="🏛️", layout="wide")
 
 st.title("🏛️ Asesor Integral COBAY")
-st.markdown("### Laboral • Académico • Sindical")
+st.markdown("### Laboral • Académico • Sindical • Directorio")
 st.markdown("---")
 
 # --- LÓGICA DE API KEY CORREGIDA (TRY-EXCEPT) ---
