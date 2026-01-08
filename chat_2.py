@@ -4,7 +4,7 @@ from google.generativeai.types import HarmCategory, HarmBlockThreshold
 import os
 
 # ---------------------------------------------------------
-# 1. BASE DE CONOCIMIENTO MAESTRA (RIT + ACADÉMICO + CCT + DIRECTORIO)
+# 1. BASE DE CONOCIMIENTO MAESTRA (RIT + ACADÉMICO + CCT + DIRECTORIO + CALENDARIO)
 # ---------------------------------------------------------
 DATOS_RAG = [
     # =========================================================================
@@ -122,7 +122,7 @@ DATOS_RAG = [
     },
 
     # =========================================================================
-    # BLOQUE 2: REGLAMENTO ACADÉMICO (Normativa Escolar y Alumnos)
+    # BLOQUE 2: REGLAMENTO ACADÉMICO
     # =========================================================================
     {
         "id": "acad_01",
@@ -206,7 +206,7 @@ DATOS_RAG = [
     },
 
     # =========================================================================
-    # BLOQUE 3: CONTRATO COLECTIVO DE TRABAJO (Sindicato y Prestaciones)
+    # BLOQUE 3: CONTRATO COLECTIVO DE TRABAJO
     # =========================================================================
     {
         "id": "cct_01",
@@ -300,7 +300,7 @@ DATOS_RAG = [
     },
 
     # =========================================================================
-    # BLOQUE 4: DIRECTORIO INSTITUCIONAL (NUEVO)
+    # BLOQUE 4: DIRECTORIO INSTITUCIONAL
     # =========================================================================
     {
         "id": "dir_01",
@@ -376,6 +376,96 @@ DATOS_RAG = [
            - Actividades Cívicas, Culturales y Deportivas: Lic. Jorge Abel Jiménez Aguilar. Tel: Ext. 28034.
            - Coordinación EMSAD: Laet. Minelia Soberanis Herrera. Tel: Ext. 28039.
         """
+    },
+
+    # =========================================================================
+    # BLOQUE 5: CALENDARIO ESCOLAR (Nuevo Ingreso, Exámenes y Eventos)
+    # =========================================================================
+    {
+        "id": "cal_01",
+        "metadata": { "sección": "Febrero - Marzo 2026", "tipo_documento": "Calendario Escolar" },
+        "contenido": """
+        FEBRERO 2026:
+        - 02/Feb: Suspensión de Labores (Inhábil).
+        - 03/Feb: Inicio de semestre 2026-A (Administrativo).
+        - 04/Feb: Reunión de Trabajo Colegiado (2 días).
+        - 06/Feb: Inicio de clases del semestre (Académico).
+        - Fines de semana: Eval. Extraordinarios 1º, 3º, 5º Sem.
+
+        MARZO 2026:
+        - 02/Mar: 1er Examen Parcial de 6º Semestre.
+        - 09/Mar: 1er Examen Parcial de 2º y 4º Semestre.
+        - 16/Mar: Suspensión de Labores (Inhábil).
+        - 17/Mar: Eval. Especial de 1º, 3º y 5º semestre.
+        - 23/Mar: Eval. Cap. Administración (4º y 6º Sem).
+        - 24/Mar: Eval. Cap. Interv. Educ. Oblig (4º y 6º Sem).
+        - 25/Mar: Eval Cap TIC'S (4º y 6º Sem).
+        - 27/Mar: Entrega de Boletas 1er parcial.
+        - 30/Mar: Inicio Período de Vacaciones.
+        - Fines de semana: Eval. Extraordinarios 1º, 3º, 5º Sem.
+        """
+    },
+    {
+        "id": "cal_02",
+        "metadata": { "sección": "Abril - Mayo 2026", "tipo_documento": "Calendario Escolar" },
+        "contenido": """
+        ABRIL 2026:
+        - 01-10/Abr: Periodo de Vacaciones.
+        - 13/Abr: Eval. Extraord Capacitaciones (4º y 6º Sem).
+        - 20/Abr: Eval. Cap. Higiene y Salud Com. (4º y 6° sem).
+        - 21/Abr: Eval Cap. Turismo (4º y 6º Sem).
+        - 27/Abr: Eval. Especial de 1º, 3º y 5º semestre.
+        - 28/Abr: 2do. Examen Parcial de 6º Sem.
+        - 29/Abr: Eval. Extraord Capacitaciones (4º y 6º Sem).
+        - 30/Abr: 2do. Examen Parcial de 2º y 4º Sem.
+        - Fines de semana: Eval. Extraordinarios 1º, 3º, 5º Sem.
+
+        MAYO 2026:
+        - 01/May: Suspensión de Labores (Inhábil).
+        - 04/May: Continuación 2do. Examen Parcial 6º Sem.
+        - 11/May: Continuación 2do. Examen Parcial 2º y 4º Sem.
+        - 18/May: Eval. Especial 1º, 3º y 5º semestre.
+        - 22/May: Entrega de Boletas 2º parcial (6º sem).
+        - 25/May: Fecha límite para solicitar Certificados al DCE.
+        - 29/May: Entrega de Boletas 2º parcial (2º y 4º sem).
+        - Fines de semana: Eval. Extraordinarios 1º, 3º, 5º Sem.
+        """
+    },
+    {
+        "id": "cal_03",
+        "metadata": { "sección": "Junio - Agosto 2026", "tipo_documento": "Calendario Escolar" },
+        "contenido": """
+        JUNIO 2026:
+        - 01/Jun: Eval todas las Capacitaciones 6º Sem.
+        - 02/Jun: 3er. Examen Parcial de 6º sem.
+        - 03/Jun: Eval todas las Capacitaciones 4º Sem.
+        - 04/Jun: Reinscripción Repetidores 3º y 5º Sem.
+        - 05/Jun: Eval. Extraord Capacitaciones 6º Sem.
+        - 06/Jun: 3er. Examen Parcial 2º y 4º Sem.
+        - 07/Jun: Solicitud Certificados Egresión (FC).
+        - 08/Jun: Periodo Recuperación 6º semestre.
+        - 09/Jun: Eval Extraord Capacitaciones 4º Sem.
+        - 10/Jun: Solicitud Certificados Egresión (Ext).
+        - 11/Jun: Entrega Boletas 3er parcial (2º y 4º sem).
+        - 12/Jun: Reinscripciones 3º y 5º semestre.
+        - 13/Jun: Período Recuperación 2º y 4º Sem.
+
+        JULIO 2026:
+        - 01/Jul: Ceremonia de Entrega de Certificados.
+        - 02/Jul: Trámites de Equivalencia, Traslados.
+        - 03/Jul: Inscripciones de Nuevo Ingreso.
+        - 04/Jul: Entrega Boletas Recuperación.
+        - 05/Jul: Fin de Semestre 2026-A.
+        - 06/Jul: Inicio Receso de Clases.
+
+        AGOSTO 2026:
+        - 01/Ago: Receso Dirección General.
+        - 02/Ago: Receso Planteles.
+        - 03/Ago: Inicio Ciclo Escolar 2026-2027 (26-B).
+        - 04/Ago: Trámites Equivalencia/Traslados.
+        - 05/Ago: Reinscripciones 3º y 5º semestre.
+        - 06/Ago: Reinscripción Repetidores 1º Sem.
+        """
     }
 ]
 
@@ -388,7 +478,8 @@ def generar_contexto_sistema(datos):
     contexto += "1. REGLAMENTO INTERIOR DE TRABAJO (RIT): Obligaciones, disciplina y condiciones generales.\n"
     contexto += "2. REGLAMENTO ACADÉMICO: Trámites escolares, derechos y obligaciones de alumnos.\n"
     contexto += "3. CONTRATO COLECTIVO DE TRABAJO (CCT): Derechos sindicales, tabuladores y prestaciones.\n"
-    contexto += "4. DIRECTORIO INSTITUCIONAL: Información de contacto, cargos y organigrama.\n\n"
+    contexto += "4. DIRECTORIO INSTITUCIONAL: Información de contacto, cargos y organigrama.\n"
+    contexto += "5. CALENDARIO ESCOLAR: Fechas de exámenes, vacaciones, inicios de curso y trámites.\n\n"
     contexto += "BASE DE CONOCIMIENTO UNIFICADA:\n"
     
     for item in datos:
@@ -400,10 +491,11 @@ def generar_contexto_sistema(datos):
         contexto += f"{contenido}\n\n"
     
     contexto += "\nINSTRUCCIONES PARA RESPONDER:\n"
-    contexto += "1. CLASIFICA LA CONSULTA: Trabajador (RIT/CCT), Alumno (Académico) o Contacto (Directorio).\n"
-    contexto += "2. JERARQUÍA: Si hay discrepancia laboral, el Contrato Colectivo (CCT) suele prevalecer.\n"
-    contexto += "3. PRECISIÓN: Cita siempre el Documento y la Cláusula/Artículo específico.\n"
-    contexto += "4. DATOS DE CONTACTO: Si piden teléfonos o nombres, usa exclusivamente la sección de DIRECTORIO.\n"
+    contexto += "1. CLASIFICA LA CONSULTA: Trabajador (RIT/CCT), Alumno (Académico/Calendario) o Contacto (Directorio).\n"
+    contexto += "2. FECHAS: Si preguntan por fechas, consulta el bloque CALENDARIO ESCOLAR.\n"
+    contexto += "3. JERARQUÍA: Si hay discrepancia laboral, el Contrato Colectivo (CCT) suele prevalecer.\n"
+    contexto += "4. PRECISIÓN: Cita siempre el Documento y la Cláusula/Artículo específico.\n"
+    contexto += "5. DATOS DE CONTACTO: Si piden teléfonos o nombres, usa exclusivamente la sección de DIRECTORIO.\n"
     return contexto
 
 SYSTEM_PROMPT = generar_contexto_sistema(DATOS_RAG)
@@ -421,7 +513,7 @@ safe_settings = {
 st.set_page_config(page_title="Asesor Normativo COBAY", page_icon="🏛️", layout="wide")
 
 st.title("🏛️ Asesor Integral COBAY")
-st.markdown("### Laboral • Académico • Sindical • Directorio")
+st.markdown("### Laboral • Académico • Sindical • Directorio • Calendario")
 st.markdown("---")
 
 # --- LÓGICA DE API KEY CORREGIDA (TRY-EXCEPT) ---
